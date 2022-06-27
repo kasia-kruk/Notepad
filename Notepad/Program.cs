@@ -6,15 +6,43 @@ namespace Notepad
     public class Program
     {
         private static NotesReader _notesReader;
-        private static List<Note> _notes;
+        private static NotesStorage _notesStorage;
 
         public static void Main(string[] args)
         {
             LoadNotes();
-
             ConsoleKeyInfo key;
             Menu menu = new Menu();
 
+            while (true)
+            {
+                DisplayMenu(menu);
+
+                switch (menu.SelectedMenuIndex)
+                {
+                    case 0:
+                        //TODO: Wywołać metodę do wyświetlenia notatek.
+                        break;
+                    case 1:
+                        AddNote();
+                        break;
+                    case 2:
+                        //TODO: Dodać metodę do usuwania wybranej notatki.
+                        break;
+                    case 3:
+                        break;
+                    case 4:
+                        CloseNotepad();
+                        break;
+                    default:
+                        break;
+                }
+            }       
+        }
+
+        private static void DisplayMenu(Menu menu)
+        {
+            ConsoleKeyInfo key;
             do
             {
                 menu.Display();
@@ -29,7 +57,7 @@ namespace Notepad
                     else
                     {
                         menu.SelectedMenuIndex++;
-                    }                   
+                    }
                 }
                 else if (key.Key == ConsoleKey.UpArrow)
                 {
@@ -42,42 +70,25 @@ namespace Notepad
                         menu.SelectedMenuIndex--;
                     }
                 }
-            } 
-            while (key.Key != ConsoleKey.Enter);
-
-            switch (menu.SelectedMenuIndex)
-            {
-                case 0:
-                    //TODO: Wywołać metodę do wyświetlenia notatek.
-                    break;
-                case 1:
-                    //TODO : Dodać metodę do tworzenia nowej notatki.
-                    break;
-                case 2:
-                    //TODO: Dodać metodę do usuwania wybranej notatki.
-                    break;
-                case 3:
-                    break;
-                case 4:
-                    CloseNotepad();
-                    break;
-                default:
-                    break;
             }
+            while (key.Key != ConsoleKey.Enter);
+        }
 
-            Console.ReadLine();
+        private static void AddNote()
+        {
+            _notesStorage.AddNote();
         }
 
         private static void LoadNotes()
         {
-            //TODO: Kasia wywołuje ładowanie notatek.
-            _notes = new List<Note>();
             _notesReader = new NotesReader();
+            _notesStorage = new NotesStorage();
+            _notesStorage.Notes = _notesReader.LoadNotes();
         }
 
         private static void CloseNotepad()
         {
-            _notesReader.SaveNotes(_notes);
+            _notesReader.SaveNotes(_notesStorage.Notes);
             Environment.Exit(0);
         }
     }

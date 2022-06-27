@@ -19,8 +19,8 @@ namespace NotepadTests
             NotesReader notesReader = new NotesReader();
             string path = Path.Combine(Environment.CurrentDirectory, notesReader.fileName);
 
-            Note note1 = new Note() { Title = "title1", Description = "description1", Content = "content1" };
-            Note note2 = new Note() { Title = "title2", Description = "description2", Content = "content2" };
+            Note note1 = new Note("title1", "description1", "content1");
+            Note note2 = new Note("title2", "description2", "content2");
             List<Note> notes = new List<Note>() { note1, note2 };  
 
             //act
