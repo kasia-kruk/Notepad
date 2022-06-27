@@ -15,7 +15,7 @@ namespace Notepad
         public string Created { get; }
         public string Modified { get; set; }
 
-        public Note()
+        public Note(string title, string description, string content)
         {
             Created = DateTime.Now.ToString();
         }
