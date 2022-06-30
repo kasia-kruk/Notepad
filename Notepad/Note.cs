@@ -17,6 +17,10 @@ namespace Notepad
 
         public Note(string title, string description, string content)
         {
+            Title = title;
+            Description = description;
+            Content = content;
+
             Created = DateTime.Now.ToString();
         }
 
