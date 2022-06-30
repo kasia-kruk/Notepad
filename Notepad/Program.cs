@@ -21,7 +21,7 @@ namespace Notepad
                 switch (menu.SelectedMenuIndex)
                 {
                     case 0:
-                        //TODO: Wywołać metodę do wyświetlenia notatek.
+                        DisplayAllNotes();
                         break;
                     case 1:
                         AddNote();
@@ -38,6 +38,11 @@ namespace Notepad
                         break;
                 }
             }       
+        }
+
+        private static void DisplayAllNotes()
+        {
+            _notesStorage.DisplayAllNotes();
         }
 
         private static void DisplayMenu(Menu menu)

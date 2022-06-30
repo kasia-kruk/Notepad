@@ -15,6 +15,16 @@ namespace Notepad
             Notes = new List<Note>();
         }
 
+        public void DisplayAllNotes()
+        {
+            Console.Clear();
+            foreach (var note in Notes)
+            {
+                Console.WriteLine($"\nTitle:{note.Title}|Description:{note.Description}|Content:{note.Content}|Created:{note.Created}|Modified:{note.Modified}");
+                Console.ReadLine();
+            }
+        }
+
         public void AddNote()
         {
             Console.Clear();
