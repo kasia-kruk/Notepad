@@ -27,7 +27,7 @@ namespace Notepad
                         AddNote();
                         break;
                     case 2:
-                        //TODO: Dodać metodę do usuwania wybranej notatki.
+                        _notesStorage.DeleteNote();
                         break;
                     case 3:
                         break;
